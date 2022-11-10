@@ -1,0 +1,21 @@
+#! /bin/bash
+
+docker compose down
+
+# Roda projeto atachado no terminal
+#docker compose up --build
+
+# Roda projeto em background
+docker compose up -d --build
+
+# Instala as dependências do projeto
+./run composer install
+
+# Faz instalação dos assets
+./run bin/console assets:install --symlink
+
+# Limpa o cache do projeto
+./run bin/console cache:clear
+
+
+
